@@ -8,3 +8,5 @@ class profile(models.Model):
     bio = models.CharField(max_length=150, blank=True)
     phone_number = models.CharField(max_length=12, blank=True)
     
+def __str__(self):
+    return f'{self.user.username}\'s Profile'
