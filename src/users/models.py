@@ -1,12 +1,29 @@
 from django.db import models
 from django.contrib.auth.models import User
+from localflavor.in_.models import INStateField
 
+from .utils import user_directory_path
 # Create your models here.
+
+class Location(models.Model):
+    address1 = models.CharField(max_length=200,blank=True)
+    address2 = models.CharField(max_length=200, blank=True)
+    city = models.CharField(max_length=100, blank=True)
+    state = INStateField(blank=True)
+    
+    def __str__(self):
+        return f'Location {self.id}'
+  
+    
+
 class profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    image = models.ImageField(null=True)
+    image = models.ImageField(upload_to=user_directory_path,null=True)
     bio = models.CharField(max_length=150, blank=True)
     phone_number = models.CharField(max_length=12, blank=True)
+    location = models.OneToOneField(Location,on_delete=models.SET_NULL,
+                                    null=True)
+
     
-def __str__(self):
-    return f'{self.user.username}\'s Profile'
+    def __str__(self):
+        return f'{self.user.username}\'s Profile'
