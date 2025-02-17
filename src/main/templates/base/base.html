@@ -11,19 +11,19 @@
 </head>
 
 <body>
-    {% block 'body' %}
+ 
 
     {% if messages %}
     {% for message in messages %}
-    <div>
+    <div {% if message.tags %} class="alert alert-{{messages.tags}}" {% endif %}>
         {{ message }}
     </div>
     {% endfor %}
     {% endif %}
-    
-
-
+    {% block 'body' %}
     {% endblock %}
+
+
 </body>
 
 {% block 'footer'%}

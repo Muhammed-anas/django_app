@@ -9,7 +9,7 @@ class Location(models.Model):
     address1 = models.CharField(max_length=200,blank=True)
     address2 = models.CharField(max_length=200, blank=True)
     city = models.CharField(max_length=100, blank=True)
-    state = INStateField(blank=True)
+    state = INStateField(default='KL')
     
     def __str__(self):
         return f'Location {self.id}'
