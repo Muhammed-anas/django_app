@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.views import View
 # Create your views here.
 
@@ -44,3 +45,9 @@ class Registerview(View):
             messages.error(request, 'An error occured')
             return render(request, 'views/register.html',{'register_form':register_form})
             
+            
+@login_required          
+def logout_user(request):
+    logout(request)
+    messages.success(request, 'You are successfully logout')
+    return redirect('main')

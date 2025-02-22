@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import profile,Location
+from .models import Profile,Location
 
 
 # Register your models here.
@@ -10,4 +10,4 @@ class profileAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(Location,LocationAdmin)
-admin.site.register(profile,profileAdmin)
+admin.site.register(Profile,profileAdmin)

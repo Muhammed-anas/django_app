@@ -12,8 +12,14 @@
             {{ login_form|crispy }}
             
             <button class="w-100 btn btn-lg btn-danger" type="submit">Sign In</button>
-        </form>
-            <p class="mt-5 mb-3 text-muted">Copyright © 2022 AutoMax</p>
+            </form>
+        <div class="mt-4 mb-3"> 
+            <p>not register</p>
+            <a href="{% url 'register' %}" class="w-100 btn btn-lg btn-danger" type="submit">Register</a>
+        
+        </div>
+            
+            <p class="mt-5 mb-3 text-muted">Copyright © {% now 'Y' %} AutoMax</p>
     
     </main>
 </div>
