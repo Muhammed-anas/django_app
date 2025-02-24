@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
-
+{% load crispy_forms_tags %}
 
 {% block 'title' %}
 <title> AutoMax. Home</title>
@@ -18,7 +18,7 @@
             </div>
             <div class="col-lg-6 col-md-8 mx-auto">
                 <form method="get">
-             
+                    {{ listing_filters.form|crispy  }}
                     <button class="btn btn-sm btn-danger" type="submit">Submit</button>
                 </form>
             </div>
@@ -27,7 +27,7 @@
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                {% for listing in listings %}
+                {% for listing in listing_filters.qs %}
                 <div class="col">
                     {% include "components/listing_card.html" %}
                 </div>
