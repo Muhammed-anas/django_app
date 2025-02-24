@@ -48,3 +48,7 @@ def list_view(request):
 
 def edit_view(request):
     return render (request, 'views/edit.html')
+
+def details_view(request):
+    listing = Listing.objects.get(id=id)
+    return render (request, 'views/listing.html', {'listing':listing})

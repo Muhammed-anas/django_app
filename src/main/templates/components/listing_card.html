@@ -21,7 +21,7 @@
         <p class="card-text">{{listing.description}}</p>
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-                <a href="" type="button"
+                <a href="{% url 'details' %}" type="button"
                     class="btn btn-sm btn-outline-secondary">View</a>
                 {% if listing.seller.user == request.user %}
                 <a href="{% url 'edit' %}" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
