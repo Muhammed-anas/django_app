@@ -3,7 +3,12 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.views import View
+from main.models import Listing
+
+from .forms import UserForm, ProfileForm
+from main.forms import LocationForms
 # Create your views here.
 
 def login_view(request):
@@ -51,3 +56,34 @@ def logout_user(request):
     logout(request)
     messages.success(request, 'You are successfully logout')
     return redirect('main')
+
+
+method_decorator(login_required, name='dispatch')
+class ProfileView(View):
+    def get(self, request):
+        user_listing = Listing.objects.filter(seller = request.user.profile)
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+        location_form = LocationForms(instance=request.user.profile.location)
+        return render(request, 'views/profile.html',{'user_form':user_form,
+                                                     'profile_form':profile_form,
+                                                     'location_form':location_form,
+                                                     'user_listing':user_listing})
+    
+    def post(self, request):
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        location_form = LocationForms(request.POST, instance=request.user.profile.location)
+        
+        if user_form.is_valid() and profile_form.is_valid() and location_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            location_form.save()
+            messages.success(request,'Profile updated successfully')
+        else:
+            messages.error(request, 'Error occured when updating profile')
+        return redirect('home')
+    
+        
+        
+    

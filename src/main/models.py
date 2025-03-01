@@ -13,7 +13,7 @@ class Listing(models.Model):
     brand = models.CharField(choices=CARS_BRANDS, default=True, max_length=30)
     model = models.CharField(max_length=30)
     vin = models.CharField(max_length=30)
-    milege = models.IntegerField(default=0)
+    mileage = models.IntegerField(default=0)
     color =models.CharField(max_length=50)
     description =models.TextField()
     engine = models.CharField(max_length=50)

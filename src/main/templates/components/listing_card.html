@@ -1,33 +1,39 @@
 <div class="card shadow-sm">
-
-    {% if listing.image %}
+    <a href="{% url 'details' id=listing.id %}">
     <img class="bd-placeholder-img card-img-top" width="100%" src="{{listing.image.url}}" role="img"
         aria-label="Placeholder: Thumbnail" focusable="false">
-    {% else %}
-    {% endif %}
-
+    </a>
+    <a href="{% url 'details' id=listing.id %}" style="text-decoration:none; color: inherit;" >
     <div class="card-body">
-        <h4 class="card-text">{{listing.brand}} {{listing.model}}</h4>
-        <div class="row justify-content-start align-items-center">
+        <h3 class="card-text">{{listing.brand}} {{listing.model}}</h3>
+        </a>
+        <div class="row justify-content-start align-items-center" style="font-weight: 800;">
             <div class="col-1">
                 <img src="{{listing.seller.photo.url}}" class="rounded-circle" height="30" width="30"
                     style="object-fit: cover;">
             </div>
             <div class="col-4">
-                <p class="card-text">{{listing.seller.user.username}}</p>
+                <p class="card-text ps-2">{{listing.seller.user.username}}</p>
             </div>
         </div>
         <br>
+        <a href="{% url 'details' id=listing.id %}" style="text-decoration:none; color: inherit; font-weight: 600;" >
         <p class="card-text">{{listing.description}}</p>
+        </a>
+    
+
+    <!-- ############################# VIEW, EDIT, DELETE button ###################################     -->
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-                <a href="{% url 'details' %}" type="button"
-                    class="btn btn-sm btn-outline-secondary">View</a>
+                <a href="{% url 'details' id=listing.id %}" type="button" class="btn btn-sm btn-outline-info">View</a>
+                
                 {% if listing.seller.user == request.user %}
-                <a href="{% url 'edit' %}" type="button" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a href="{% url 'edit' id=listing.id %}" type="button" class="btn btn-sm btn-outline-primary">Edit</a>
+                <a href="{% url 'delete' id=listing.id %}" type="button" class="btn btn-sm btn-outline-danger">Delete</a>
                 {% endif %}
+
             </div>
-            <small class="text-muted">{{listing.updated_at}}</small>
+            <small class="text-muted ps-3">{{listing.updated_at}}</small>
             <button id="" type="button" value="like" class="btn btn-secondary">
                 
         </div>

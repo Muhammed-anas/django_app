@@ -34,6 +34,7 @@ body {
 
 .h3, h3 {
     color: white;
+    font-weight: 800;
 }
 
 body.index {

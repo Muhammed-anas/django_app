@@ -11,11 +11,13 @@ from .filters import ListingFilters
 def main_view(request):
     return render(request, "views/main.html")
 
+
 @login_required
 def home_view(request):
     listings = Listing.objects.all()
     listing_filters = ListingFilters(request.GET, queryset=listings) 
     return render(request, "views/home.html", {'listing_filters':listing_filters})
+
 
 @login_required
 def list_view(request):
@@ -37,8 +39,7 @@ def list_view(request):
         except Exception as e:
             print (e)
             messages.error(
-                request, 'Error occured when added the listing'
-                )
+                request, 'Error occured when added the listing')
             
     elif request.method == 'GET':
         listing_forms = ListingForms()
@@ -46,9 +47,41 @@ def list_view(request):
     return render (request, 'views/list.html', {'listing_forms':listing_forms,
                    'location_forms':location_forms})
 
-def edit_view(request):
-    return render (request, 'views/edit.html')
 
-def details_view(request):
+@login_required
+def edit_view(request, id):
+    listing = Listing.objects.get(id=id)
+    if request.method == 'POST':
+        try:
+            listing_forms = ListingForms(request.POST, request.FILES, instance=listing)
+            location_forms = LocationForms(request.POST, instance=listing.location)
+            if listing_forms.is_valid() and location_forms.is_valid():
+                listing_forms.save()
+                location_forms.save()
+                messages.info(
+                    request, f'{listing.brand} {listing.model} updated Successfully')
+                return redirect ('home')
+            else:
+                raise Exception()
+        except Exception as e:
+            print (e)
+            messages.error(
+                request, 'Error occured when updated the listing')    
+    elif request.method == 'GET':
+        listing_forms = ListingForms(instance=listing)
+        location_forms = LocationForms(instance=listing.location)
+    return render (request, 'views/edit.html', {'listing_forms':listing_forms,
+                   'location_forms':location_forms})
+    
+    
+@login_required
+def details_view(request, id):
     listing = Listing.objects.get(id=id)
     return render (request, 'views/listing.html', {'listing':listing})
+
+
+@login_required
+def delete_post(request, id):
+    delete_list = Listing.objects.get(id=id)
+    delete_list.delete()
+    return redirect('home')
