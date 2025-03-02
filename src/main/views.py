@@ -1,9 +1,9 @@
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from .models import Listing
+from .models import Listing, LikedListing
 from .forms import ListingForms, LocationForms
 from .filters import ListingFilters
 
@@ -85,3 +85,20 @@ def delete_post(request, id):
     delete_list = Listing.objects.get(id=id)
     delete_list.delete()
     return redirect('home')
+
+
+@login_required
+def like_list_view(request, id):
+    listing = get_object_or_404(Listing, id=id)
+    liked_list, created = LikedListing.objects.get_or_create(profile = request.user.profile, listing=listing)
+    
+    if not created:
+        liked_list.delete()
+    else:
+        liked_list.save()
+    
+    return JsonResponse({
+        'is_liked_by_user': created
+    })
+    
+    

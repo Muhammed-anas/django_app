@@ -38,8 +38,9 @@
         <table class="table table-hover">
             <tbody>
                {% for listing in user_listing %}
-
+               <tr>
                <td>{{listing.brand}} {{listing.model}}</td>
+            </tr>
                {% endfor %}
 
             </tbody>
@@ -55,7 +56,10 @@
         </div>
         <table class="table table-hover">
             <tbody>
-               
+               {% for liked in liked_listings %}
+               <td>{{ liked.listing.brand }} {{liked.listing.model}}</td>
+               <td>{{liked.liked_date}}</td>
+               {% endfor %}
 
 
                
