@@ -34,8 +34,16 @@
 
             </div>
             <small class="text-muted ps-3">{{listing.updated_at}}</small>
-            <button id="" type="button" value="like" class="btn btn-secondary">
+            <button id="like_{{listing.id}}" type="button" value="like" class="btn btn-secondary">
+                
+            </button>
                 
         </div>
     </div>
 </div>
+<script>
+    $("like_{{listing.id}}").click(function () {
+        console.log("{{listing.id}}")
+    })
+
+</script>
