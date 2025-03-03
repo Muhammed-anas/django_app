@@ -8,5 +8,5 @@ urlpatterns = [
     path('listing/<str:id>/edit/', edit_view, name='edit'),
     path('listing/<str:id>/details/', details_view, name='details'),
     path('listing/<str:id>/delete/', delete_post, name= 'delete'),
-    path('listing/<str:id>/like/', like_list_view, name='like')
+    path('listing/<str:id>/like/', like_list_view, name='like_list')
 ] 

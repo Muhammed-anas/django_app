@@ -35,15 +35,24 @@
             </div>
             <small class="text-muted ps-3">{{listing.updated_at}}</small>
             <button id="like_{{listing.id}}" type="button" value="like" class="btn btn-secondary">
-                
+             s
             </button>
                 
         </div>
     </div>
 </div>
 <script>
-    $("like_{{listing.id}}").click(function () {
-        console.log("{{listing.id}}")
+    $("#like_{{listing.id}}").click(function () {
+        $.ajax({
+            type:"POST",
+            url:"{% url 'like_list' id=listing.id %}",
+            data:{'csrfmiddlewaretoken':'{{ csrf_token }}' },
+            dataType:"json",
+            success: function (r) {
+                alert(r)
+            },
+            error: function (rs, e) {}
+        });
     })
 
 </script>
