@@ -15,8 +15,11 @@ def main_view(request):
 @login_required
 def home_view(request):
     listings = Listing.objects.all()
-    listing_filters = ListingFilters(request.GET, queryset=listings) 
-    return render(request, "views/home.html", {'listing_filters':listing_filters})
+    listing_filters = ListingFilters(request.GET, queryset=listings)
+    user_liked_listing = LikedListing.objects.filter(profile=request.user.profile).values_list("listing")
+    liked_listing_id = [l[0] for l in user_liked_listing]
+    return render(request, "views/home.html", {'listing_filters':listing_filters,
+                                               'liked_listing_id':liked_listing_id})
 
 
 @login_required
