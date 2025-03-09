@@ -68,7 +68,7 @@
                             <button
                                 class="w-100 btn btn-lg btn-outline-primary my-3">{{listing.seller.phone_number}}</button>
                             <button id="sendEmail" class="w-100 btn btn-lg btn-outline-primary">Send Email</button>
-                        </div>
+                        </div>      
                     </div>
                 </div>
             </div>
@@ -85,5 +85,23 @@
         </div>
     </div>
 </main>
+
+<script>
+    $("#sendEmail").click (function (){
+        $.ajax({
+            type:'POST',
+            url:"{%url 'send_mail' id=listing.id%}",
+            data:{'csrfmiddlewaretoken':'{{csrf_token}}' },
+            dataType:"json",
+            success: function (r) {
+                alert('Email sent successfully')
+            },
+            error: function (rs, e) {
+                alert:(rs.info)
+            },
+            
+        });
+    })
+</script>
 
 {% endblock %}

@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.mail import send_mail
 
 from .models import Listing, LikedListing
 from .forms import ListingForms, LocationForms
@@ -104,4 +105,25 @@ def like_list_view(request, id):
         'is_liked_by_user': created
     })
     
+    
+@login_required
+def inquery_send_mail(request, id):
+    listing = get_object_or_404(Listing, id=id)
+    try:
+        email_subject = f'{request.user.username} is intrested {listing.brand} {listing.model}'
+        email_message = f'Hello {listing.seller.user.username}, {request.user.username} is intrested {listing.brand} {listing.model} in listing on Automax'
+        send_mail(email_subject, email_message,'noreplyautomax@gmail.com',
+                  [listing.seller.user.email], fail_silently=True)
+    except Exception as e:
+        print(e)
+        return JsonResponse({
+            'success':False,
+            'info':e
+        })
+     
+@login_required
+def users_profile_view(request, id):
+    profile_listing = get_object_or_404(Listing, id=id)
+    return render (request, "views/profile_page.html",
+                   {"profile_listing":profile_listing})
     

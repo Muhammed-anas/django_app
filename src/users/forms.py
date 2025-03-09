@@ -7,11 +7,11 @@ class UserForm(forms.ModelForm):
     username = forms.CharField(disabled=True)
     class Meta:
         model = User
-        fields = {'username','first_name','last_name'}
+        fields = {'username','first_name','last_name','email'}
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.order_fields(['username','first_name','last_name'])
+        self.order_fields(['username','first_name','last_name','email'])
         
         
 class ProfileForm(forms.ModelForm):

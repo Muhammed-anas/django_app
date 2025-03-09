@@ -7,6 +7,15 @@
     <div class="card-body">
         <h3 class="card-text">{{listing.brand}} {{listing.model}}</h3>
         </a>
+
+        {% if request.user == listing.seller.user %}
+        <a href="{% url 'profile' %}" style="text-decoration:none; color: inherit;">
+        
+        {%else%}
+        <a href="{% url 'profile_view' id=listing.id %}" style="text-decoration:none; color: inherit;">
+
+        {% endif %}
+        
         <div class="row justify-content-start align-items-center" style="font-weight: 800;">
             <div class="col-1">
                 <img src="{{listing.seller.photo.url}}" class="rounded-circle" height="30" width="30"
@@ -16,6 +25,11 @@
                 <p class="card-text ps-2">{{listing.seller.user.username}}</p>
             </div>
         </div>
+    </a>
+</a>
+   
+
+    
         <br>
         <a href="{% url 'details' id=listing.id %}" style="text-decoration:none; color: inherit; font-weight: 600;" >
         <p class="card-text">{{listing.description}}</p>

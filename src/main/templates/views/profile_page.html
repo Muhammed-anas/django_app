@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block 'title' %}
+<title>AutoMax .
+    {{ profile_listing.seller.user.username }} Listing
+</title>
+{% endblock %}
+{% block 'body' %}
+<main>
+    <section class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                <img src="{{ profile_listing.seller.photo.url }}" class="d-block mx-lg-auto img-fluid" width="1920" height="1080"
+                    loading="lazy">
+            </div>
+            <div class="col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">{{profile_listing.seller.user.username}}</h1>
+            </div>
+        </div>
+    </section>
+    <div class="bg-light">
+        <div class="container px-4 py-5">
+            <h2 class="mb-3 border-bottom" style="color: black">Profile Details</h2>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <div class="col-lg-8">
+                    <div class="table-responsive">
+                        <table class="table text-center">
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="text-start">Username</th>
+                                    <td> {{profile_listing.seller.user}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-start">email</th>
+                                    <td> {{profile_listing.seller.user.email}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-start">Bio</th>
+                                    <td> {{profile_listing.seller.user.bio}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-start">phone_number</th>
+                                    <td> {{profile_listing.seller.phone_number}}</td>
+                                </tr>
+                                      
+                            </tbody>
+                        </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
