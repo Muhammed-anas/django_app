@@ -5,7 +5,8 @@ from django.contrib import messages
 from django.core.mail import send_mail
 
 from .models import Listing, LikedListing
-from .forms import ListingForms, LocationForms
+from .forms import ListingForms
+from users.forms import LocationForms
 from .filters import ListingFilters
 
 

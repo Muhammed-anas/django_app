@@ -28,7 +28,15 @@
                             <tbody>
                                 <tr>
                                     <th scope="row" class="text-start">Username</th>
-                                    <td> {{profile_listing.seller.user}}</td>
+                                    <td> {{profile_listing.seller.user.username}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-start">First Nmae</th>
+                                    <td> {{profile_listing.seller.user.first_name}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="text-start">Last Name</th>
+                                    <td> {{profile_listing.seller.user.last_name}}</td>
                                 </tr>
                                 <tr>
                                     <th scope="row" class="text-start">email</th>
@@ -42,6 +50,7 @@
                                     <th scope="row" class="text-start">phone_number</th>
                                     <td> {{profile_listing.seller.phone_number}}</td>
                                 </tr>
+                                
                                       
                             </tbody>
                         </table>

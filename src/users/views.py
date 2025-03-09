@@ -8,7 +8,7 @@ from django.views import View
 from main.models import Listing, LikedListing
 
 from .forms import UserForm, ProfileForm
-from main.forms import LocationForms
+from .forms import LocationForms
 # Create your views here.
 
 def login_view(request):
