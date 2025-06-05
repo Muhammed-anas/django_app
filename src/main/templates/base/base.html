@@ -17,7 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" 
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     
-    <title>Automax</title>
+    <title>AutoLux</title>
 </head>
 
 <body>
@@ -40,14 +40,18 @@
                     <img class="bi me-2" width="32" height="32" src="{% static 'images/logo.png' %}"
                         aria-label="Bootstrap">
                 </a>
-                {% if request.user.is_authenticated %}
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li>
                         <a href="{% url 'profile' %}" class="nav-link px-2" style="color:rgb(26, 230, 223);";>Profile</a>
                     </li>
                 </ul>
+                {% if request.user.is_authenticated %}
                 <div class="text-end">
-                    <a type="button" href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+                    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+                </div>
+                {% else %}
+                <div class="text-end">
+                    <a  href="{% url 'login' %}" class="btn btn-info">Login</a>
                 </div>
                 {% endif %}
             </div>
@@ -65,13 +69,11 @@
 {% block 'footer'%}
 <footer class="footer text-muted bg-dark py-5">
     <div class="container" style="color:rgb(26, 230, 223);">
-        <p class="float-end mb-1">Powered by <a href="https://www.djangoproject.com/" style="color:#f1186b;">Django</a></p>
-        
 
 
-        <p class="mb-1">AutoMax - Best Place To Buy & Sell Cars</p>
+        <p class="mb-1">AutoLux - Best Place To Buy & Sell Cars</p>
         <p class="mb-0">© Copyright {% now 'Y' %} 
-            <a href="" style="color:#f1186b;;">AutoMax</a>
+            <a href="" style="color:#f1186b;;">AutoLux</a>
         </p>
     </div>
 </footer>

@@ -1,3 +1,4 @@
+{% load static %}
 <div class="card shadow-sm">
     <a href="{% url 'details' id=listing.id %}">
     <img class="bd-placeholder-img card-img-top" width="100%" src="{{listing.image.url}}" role="img"
@@ -18,8 +19,15 @@
         
         <div class="row justify-content-start align-items-center" style="font-weight: 800;">
             <div class="col-1">
+
+                {% if listing.seller.photo %}
                 <img src="{{listing.seller.photo.url}}" class="rounded-circle" height="30" width="30"
                     style="object-fit: cover;">
+                {% else %}
+                <img src='{% static "images/user.jpg" %}' class="rounded-circle" height="30" width="30"
+                    style="object-fit: cover;">
+                {% endif %}
+
             </div>
             <div class="col-4">
                 <p class="card-text ps-2">{{listing.seller.user.username}}</p>
@@ -39,11 +47,11 @@
     <!-- ############################# VIEW, EDIT, DELETE button ###################################     -->
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-                <a href="{% url 'details' id=listing.id %}" type="button" class="btn btn-sm btn-outline-info">View</a>
+                <a href="{% url 'details' id=listing.id %}" type="button" class="btn btn-sm btn-outline-info me-2">View</a>
                 
                 {% if listing.seller.user == request.user %}
-                <a href="{% url 'edit' id=listing.id %}" type="button" class="btn btn-sm btn-outline-primary">Edit</a>
-                <a href="{% url 'delete' id=listing.id %}" type="button" class="btn btn-sm btn-outline-danger">Delete</a>
+                <a href="{% url 'edit' id=listing.id %}" type="button" class="btn btn-sm btn-outline-primary me-2">Edit</a>
+                <a href="{% url 'delete' id=listing.id %}" type="button" class="btn btn-sm btn-outline-danger me-2">Delete</a>
                 {% endif %}
 
             </div>

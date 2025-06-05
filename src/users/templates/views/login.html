@@ -11,11 +11,11 @@
                 <img class="mb-4" src="{% static 'images/logo.png' %}" alt="" width="72" height="72">
             {{ login_form|crispy }}
             
-            <button class="w-100 btn btn-lg btn-danger" type="submit">Sign In</button>
+            <button class="w-50 btn btn-info" type="submit">Sign In</button>
             </form>
-        <div class="mt-4 mb-3"> 
-            <p>not register</p>
-            <a href="{% url 'register' %}" class="w-100 btn btn-lg btn-danger" type="submit">Register</a>
+        <div class="mt-5 mb-3"> 
+            <p>Not register</p>
+            <a href="{% url 'register' %}" class="w-50 btn  btn-dark" type="submit">Register</a>
         
         </div>
             

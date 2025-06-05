@@ -14,12 +14,15 @@ def main_view(request):
     return render(request, "views/main.html")
 
 
-@login_required
 def home_view(request):
-    listings = Listing.objects.all()
+    listings = Listing.objects.all().order_by('-updated_at')
     listing_filters = ListingFilters(request.GET, queryset=listings)
-    user_liked_listing = LikedListing.objects.filter(profile=request.user.profile).values_list("listing")
-    liked_listing_id = [l[0] for l in user_liked_listing]
+    
+    liked_listing_id = []
+    if request.user.is_authenticated:
+        user_liked_listing = LikedListing.objects.filter(
+            profile=request.user.profile).values_list("listing")
+        liked_listing_id = [l[0] for l in user_liked_listing]
     return render(request, "views/home.html", {'listing_filters':listing_filters,
                                                'liked_listing_id':liked_listing_id})
 
@@ -79,7 +82,6 @@ def edit_view(request, id):
                    'location_forms':location_forms})
     
     
-@login_required
 def details_view(request, id):
     listing = Listing.objects.get(id=id)
     return render (request, 'views/listing.html', {'listing':listing})
@@ -95,8 +97,8 @@ def delete_post(request, id):
 @login_required
 def like_list_view(request, id):
     listing = get_object_or_404(Listing, id=id)
-    liked_list, created = LikedListing.objects.get_or_create(profile = request.user.profile, listing=listing)
-    
+    liked_list, created = LikedListing.objects.get_or_create(
+        profile = request.user.profile, listing=listing)
     if not created:
         liked_list.delete()
     else:
@@ -113,7 +115,7 @@ def inquery_send_mail(request, id):
     try:
         email_subject = f'{request.user.username} is intrested {listing.brand} {listing.model}'
         email_message = f'Hello {listing.seller.user.username}, {request.user.username} is intrested {listing.brand} {listing.model} in listing on Automax'
-        send_mail(email_subject, email_message,'noreplyautomax@gmail.com',
+        send_mail(email_subject, email_message,'AutoLux@gmail.com',
                   [listing.seller.user.email], fail_silently=True)
     except Exception as e:
         print(e)

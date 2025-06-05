@@ -8,12 +8,12 @@
 <div class="d-flex h-100 text-center text-white index">
     <video autoplay muted loop id="myVideo" class="bg-video">
         <source src="{% static 'videos/bg.mp4' %}" type="video/mp4">
-        <!-- Background video source from Pexels -->
+   
     </video>
     <div class="d-flex w-100 h-100 p-3 mx-auto flex-column main-content">
         <header class="mb-auto">
             <div>
-                <h3 class="float-md-start mb-0">AutoMax</h3>
+                <h3 class="float-md-start mb-0">AutoLux</h3>
                 <nav class="nav nav-masthead justify-content-center float-md-end" style="margin-left: 90%;">
                     {% if request.user.is_authenticated %}
                     <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
@@ -25,15 +25,15 @@
             </div>
         </header>
 
-        <main class="px-3">
-            <h2>Find a deal near you!</h2>
+        <main class="m-5">
+            <h2>Drive Your Dream, Today</h2>
             <p class="lead">
-                Looking to buy or sell a used car? We've got you covered. <br> 
-                AutoMax is the leading used car marketplace.
+                At <strong>AutoLux</strong>, we make it easy to buy and sell quality used cars. <br>
+                Browse trusted listings near you and take the next step toward your perfect ride.
             </p>
             <p class="lead">
-                <a href="{% url 'register' %}" class="btn btn-lg btn-secondary fw-bold border-white text-dark bg-white" style="text-decoration: none;">
-                    Register
+                <a href="{% url 'home' %}" class="btn btn-outline-info fw-bold border-white text-dark bg-white" style="text-decoration: none;">
+                    home
                 </a>
             </p>
         </main>
@@ -41,7 +41,7 @@
         <footer class="mt-auto text-white-50">
             <p>
                 Copyright © {% now 'Y' %} 
-                <a href="#" class="text-white" style="text-decoration: none;">Anasanu</a> 
+                <a href="#" class="text-white" style="text-decoration: none;">AutoLux</a> 
                 
             </p>
         </footer>
