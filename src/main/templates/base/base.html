@@ -40,16 +40,22 @@
                     <img class="bi me-2" width="32" height="32" src="{% static 'images/logo.png' %}"
                         aria-label="Bootstrap">
                 </a>
+                {% if request.user.is_authenticated %}
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li>
                         <a href="{% url 'profile' %}" class="nav-link px-2" style="color:rgb(26, 230, 223);";>Profile</a>
                     </li>
                 </ul>
-                {% if request.user.is_authenticated %}
                 <div class="text-end">
                     <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
                 </div>
+                
                 {% else %}
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li>
+                        <a href="{% url 'profile_redirect' %}" class="nav-link px-2" style="color:rgb(26, 230, 223);";>Profile</a>
+                    </li>
+                </ul>
                 <div class="text-end">
                     <a  href="{% url 'login' %}" class="btn btn-info">Login</a>
                 </div>

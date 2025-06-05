@@ -57,7 +57,6 @@ def logout_user(request):
     messages.success(request, 'You are successfully logout')
     return redirect('main')
 
-
 method_decorator(login_required, name='dispatch')
 class ProfileView(View):
     def get(self, request):
@@ -85,7 +84,8 @@ class ProfileView(View):
         else:
             messages.error(request, 'Error occured when updating profile')
         return redirect('home')
-    
         
-        
+@login_required
+def profile_redirect(request):
+    return render(request,'views/login.html')    
     
