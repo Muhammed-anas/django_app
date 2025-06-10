@@ -114,7 +114,7 @@ def inquery_send_mail(request, id):
     listing = get_object_or_404(Listing, id=id)
     try:
         email_subject = f'{request.user.username} is intrested {listing.brand} {listing.model}'
-        email_message = f'Hello {listing.seller.user.username}, {request.user.username} is intrested {listing.brand} {listing.model} in listing on Automax'
+        email_message = f'Hello {listing.seller.user.username}, {request.user.username} is intrested {listing.brand} {listing.model} in listing on AutoLux'
         send_mail(email_subject, email_message,'AutoLux@gmail.com',
                   [listing.seller.user.email], fail_silently=True)
     except Exception as e:
