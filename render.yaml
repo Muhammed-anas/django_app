@@ -2,7 +2,9 @@ services:
   - type: web
     name: automax-django
     runtime: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
     startCommand: gunicorn automax.wsgi:application
     envVars:
       - key: SECRET_KEY
@@ -10,7 +12,7 @@ services:
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
-        value: automax.onrender.com
+        value: autolux-ntbk.onrender.com
       - key: EMAIL_HOST_USER
         value: your-email@gmail.com
       - key: EMAIL_HOST_PASSWORD
