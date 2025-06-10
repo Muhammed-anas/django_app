@@ -1,28 +1,75 @@
-🚘 Automax – Vehicle Services Automation Platform
-A smart, web-based platform designed to streamline and digitize vehicle-related services, built with Django.
+🚘 Autolux – Vehicle Services Automation Platform (Python Django)
+Autolux is a smart, web-based platform built with Django, designed to digitize and streamline vehicle-related services. It replicates real-world e-commerce functionality tailored specifically for the automotive sector.
 
-🔍 Overview:
-Automax is a feature-rich automotive services platform where users can browse, order, and manage vehicle-related products online. This project mimics a real-world e-commerce solution tailored for automobile needs.
+🚀 Project Overview
+Autolux offers a seamless experience for users to browse, order, and manage automotive products and services—all from a responsive, user-friendly interface.
 
-🌟 Key Features:
-✅ Product Catalog: Users can view a wide range of automotive products and services with clean UI cards.
+🌟 Key Features
+✅ Product Catalog
+Clean, card-based UI showcasing various automobile-related products and services.
 
-💳 Secure Payment Gateway Integration: Simulates real-world payment processes and order confirmation handling.
+💳 Secure Payment Gateway Integration
+Simulated payment processing with confirmation flow to mimic real-world transactions.
 
-🧾 Order Processing System: Automatically handles order placement, email confirmations, and status updates.
+🧾 Automated Order Management
+Includes order placement, email confirmations, and status tracking.
 
-🛠️ Admin Dashboard: Admins can manage product listings, update details, and view order history.
+🛠️ Admin Dashboard
+Role-based admin panel to manage products, update listings, and review order history.
 
-🔐 User Authentication: Login/register system for customers and admin panel with role-based access.
+🔐 User Authentication System
+Separate access for customers and admins with secure login/register functionality.
 
-🌐 Mobile Responsive UI: Optimized for both desktop and mobile views.
+🌐 Mobile-Responsive Design
+Fully responsive layout ensures smooth experience across devices.
 
-🧰 Technologies Used:
-Backend: Django (Python), SQLite
+🧱 Tech Stack
+Backend:
+Django (Python)
 
-Frontend: HTML5, CSS3, JavaScript (vanilla)
+SQLite (via Django ORM)
 
-Version Control: Git, GitHub
+Frontend:
+HTML5, CSS3
 
-🔗 Live Demo:
-Coming soon 
+Vanilla JavaScript
+
+Tools:
+Git & GitHub for version control
+
+Django Admin & Email utilities
+
+🔗 Live Demo
+Coming Soon
+
+🧠 Features in Development
+📦 Inventory tracking per product
+
+💳 Payment integration with Stripe or Razorpay
+
+📊 Sales analytics for admins
+
+🔍 Search & filtering options for services
+
+📚 My Broader Skills
+Languages: Python, JavaScript, TypeScript, Java, SQL, HTML, CSS
+Web Dev: Django, Flask, React, Bootstrap
+AI Tools: scikit-learn, TensorFlow, HuggingFace
+Databases: MongoDB, PostgreSQL, SQLite
+Tools: Git, VS Code, Postman, Netlify, GitHub
+
+💼 Other Projects
+🛍️ Shopfy – Full Stack eCommerce App (MERN)
+
+🤖 GalaxNova – AI Chatbot with NLP
+
+📝 Bloggy – Django-Based Blog Platform
+
+🎬 AI Movie Recommender – Powered by TMDb API
+
+💻 Responsive Developer Portfolio
+
+💬 Let’s Connect
+📧 Email: muhammedanas6282@gmail.com
+🔗 LinkedIn: linkedin.com/in/muhammedanas
+🐙 GitHub: github.com/Muhammed-anas
