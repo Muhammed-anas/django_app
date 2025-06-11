@@ -6,6 +6,7 @@ services:
       pip install -r requirements.txt
       python manage.py collectstatic --noinput
     startCommand: |
+      chmod 777 /data
       python manage.py migrate
       gunicorn automax.wsgi:application
     envVars:
