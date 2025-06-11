@@ -172,3 +172,7 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+print("Resolved DB path:", env('DATABASE_NAME'))
+
+
