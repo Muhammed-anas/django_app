@@ -9,18 +9,18 @@ services:
       python manage.py migrate
       gunicorn automax.wsgi:application
     envVars:
-  - key: SECRET_KEY
-    generateValue: true
-  - key: DEBUG
-    value: "False"
-  - key: ALLOWED_HOSTS
-    value: '["autolux-ntbk.onrender.com"]'
-  - key: EMAIL_HOST_USER
-    value: your-email@gmail.com
-  - key: EMAIL_HOST_PASSWORD
-    value: your-app-password
-  - key: DATABASE_NAME
-    value: /data/db.sqlite3
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: autolux-ntbk.onrender.com
+      - key: EMAIL_HOST_USER
+        value: your-email@gmail.com
+      - key: EMAIL_HOST_PASSWORD
+        value: your-app-password
+      - key: DATABASE_NAME
+        value: /data/db.sqlite3
     disk:
       name: data-disk
       mountPath: /data
