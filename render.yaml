@@ -5,7 +5,9 @@ services:
     buildCommand: |
       pip install -r requirements.txt
       python manage.py collectstatic --noinput
-    startCommand: gunicorn automax.wsgi:application
+    startCommand: |
+      python manage.py migrate
+      gunicorn automax.wsgi:application
     envVars:
       - key: SECRET_KEY
         generateValue: true
