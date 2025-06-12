@@ -3,12 +3,12 @@ services:
     name: automax-django
     runtime: python
     buildCommand: |
-      pip install -r requirements.txt
-      python manage.py collectstatic --noinput
+      pip install -r src/requirements.txt
+      python src/manage.py collectstatic --noinput
     startCommand: |
       chmod 777 /data
-      python manage.py migrate
-      gunicorn automax.wsgi:application
+      python src/manage.py migrate
+      gunicorn automax.wsgi:application --chdir src
     envVars:
       - key: SECRET_KEY
         generateValue: true
@@ -17,9 +17,9 @@ services:
       - key: ALLOWED_HOSTS
         value: autolux-ntbk.onrender.com
       - key: EMAIL_HOST_USER
-        value: your-email@gmail.com
+        value: anasanu8865@gmail.com
       - key: EMAIL_HOST_PASSWORD
-        value: your-app-password
+        value: pepr slon uvjq ggbt
       - key: DATABASE_NAME
         value: /data/db.sqlite3
     disk:
