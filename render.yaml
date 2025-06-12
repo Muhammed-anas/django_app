@@ -6,6 +6,8 @@ services:
       pip install -r src/requirements.txt
       python src/manage.py collectstatic --noinput
     startCommand: |
+      mkdir -p /data
+      chmod 777 /data
       python src/manage.py migrate --noinput
       gunicorn automax.wsgi:application --chdir src
     envVars:
@@ -19,5 +21,9 @@ services:
         value: anasanu8865@gmail.com
       - key: EMAIL_HOST_PASSWORD
         value: pepr slon uvjq ggbt
-      - key: DATABASE_URL
-        value: postgresql://autolux_db_user:5aQmV31cqOhnaIT2YDbnBvy487tv6Fq3@dpg-d158746uk2gs73bun24g-a/autolux_db  # Replace this!
+      - key: DATABASE_NAME
+        value: /data/db.sqlite3
+    disk:
+      name: data-disk
+      mountPath: /data
+      sizeGB: 1

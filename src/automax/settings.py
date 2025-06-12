@@ -90,7 +90,11 @@ WSGI_APPLICATION = 'automax.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db(),  # Automatically reads DATABASE_URL from env
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': env('DATABASE_NAME'),
+
+    }
 }
 
 
