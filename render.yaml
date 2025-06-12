@@ -1,29 +1,27 @@
 services:
   - type: web
-    name: autolux-django
-    runtime: python
-    buildCommand: |
-      pip install -r src/requirements.txt
-      python src/manage.py collectstatic --noinput
-    startCommand: |
-      mkdir -p /data
-      chmod 777 /data
-      python src/manage.py migrate --noinput
-      gunicorn automax.wsgi:application --chdir src
+    name: autolux
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn automax.wsgi
     envVars:
-      - key: SECRET_KEY
-        generateValue: true
       - key: DEBUG
-        value: "False"
+        value: False
+      - key: SECRET_KEY
+        sync: false
       - key: ALLOWED_HOSTS
-        value: autolux-ntbk.onrender.com
+        value: "*"
       - key: EMAIL_HOST_USER
-        value: anasanu8865@gmail.com
+        sync: false
       - key: EMAIL_HOST_PASSWORD
-        value: pepr slon uvjq ggbt
-      - key: DATABASE_NAME
-        value: /data/db.sqlite3
-    disk:
-      name: data-disk
-      mountPath: /data
-      sizeGB: 1
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: "5432"
