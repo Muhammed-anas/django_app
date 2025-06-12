@@ -1,13 +1,14 @@
 services:
   - type: web
-    name: automax-django
+    name: autolux-django
     runtime: python
     buildCommand: |
       pip install -r src/requirements.txt
       python src/manage.py collectstatic --noinput
     startCommand: |
+      mkdir -p /data
       chmod 777 /data
-      python src/manage.py migrate
+      python src/manage.py migrate --noinput
       gunicorn automax.wsgi:application --chdir src
     envVars:
       - key: SECRET_KEY
