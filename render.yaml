@@ -8,13 +8,13 @@ services:
       - key: DEBUG
         value: False
       - key: SECRET_KEY
-        sync: false
+        value: w_%#8ovr*k(p*j%wv^oeja3_1&_p^b7vubgmbh=qgl6oz21nec
       - key: ALLOWED_HOSTS
         value: "*"
       - key: EMAIL_HOST_USER
-        sync: false
+        value: anasanu8865@gmail.com
       - key: EMAIL_HOST_PASSWORD
-        sync: false
+        value: pepr slon uvjq ggbt
       - key: DB_NAME
         sync: false
       - key: DB_USER
