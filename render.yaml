@@ -17,3 +17,11 @@ services:
         value: pepr slon uvjq ggbt
       - key: DATABASE_URL
         value: postgres://autolux_db_user:5a0mV31cqOhnaIT2YDbnBvy487tV6Fq3@dpg-d158746uk2gs73bun24g-a/autolux_db
+
+      - key: CLOUDINARY_CLOUD_NAME
+        value: dcmnq8pvy
+      - key: CLOUDINARY_API_KEY
+        value: '423639713246433'
+      - key: CLOUDINARY_API_SECRET
+        value: yFGk5-W_ZvK2-5LsMBuw0fd0Rk0
+      

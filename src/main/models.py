@@ -2,6 +2,7 @@ from django.db import models
 import uuid
 from .consts import CARS_BRANDS, TRANSMISSION_OPTIONS
 from .utils import user_listing_path
+from cloudinary.models import CloudinaryField
 from users.models import Profile, Location
 
 class Listing(models.Model):
@@ -21,7 +22,7 @@ class Listing(models.Model):
                                     default=None)
     location = models.OneToOneField(Location, on_delete=models.SET_NULL,
                                     null=True)
-    image = models.ImageField(upload_to=user_listing_path)
+    image = CloudinaryField('image',folder='listings')
     
     def __str__(self):
         return f'{self.seller.user.username}\'s listing - {self.brand} {self.model}'

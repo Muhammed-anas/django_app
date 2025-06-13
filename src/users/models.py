@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 from localflavor.us.models import USStateField
 
@@ -18,7 +19,7 @@ class Location(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    photo = models.ImageField(upload_to=user_directory_path,null=True)
+    photo = CloudinaryField('image',null=True)
     bio = models.CharField(max_length=150, blank=True)
     phone_number = models.CharField(max_length=12, blank=True)
     location = models.OneToOneField(Location,on_delete=models.SET_NULL,

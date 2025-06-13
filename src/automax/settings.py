@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
     'localflavor',
     'crispy_forms',
     'django_filters',
@@ -92,7 +93,6 @@ WSGI_APPLICATION = 'automax.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(default=env('DATABASE_URL'))
 }
-
 
 
 # Password validation
@@ -146,6 +146,15 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Cloudinary Configuration
+CLOUDINARY_CLOUD_NAME = os.environ.get('CLOUDINARY_CLOUD_NAME')
+CLOUDINARY_API_KEY = os.environ.get('CLOUDINARY_API_KEY')
+CLOUDINARY_API_SECRET = os.environ.get('CLOUDINARY_API_SECRET')
+
+# This tells Django's default file storage to use Cloudinary for uploaded files
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaStorage'
+
 
 
 MEDIA_URL = '/media/'
