@@ -15,13 +15,5 @@ services:
         value: anasanu8865@gmail.com
       - key: EMAIL_HOST_PASSWORD
         value: pepr slon uvjq ggbt
-      - key: DB_NAME
-        sync: false
-      - key: DB_USER
-        sync: false
-      - key: DB_PASSWORD
-        sync: false
-      - key: DB_HOST
-        sync: false
-      - key: DB_PORT
-        value: "5432"
+      - key: DATABASE_URL
+        value: postgres://autolux_db_user:5a0mV31cqOhnaIT2YDbnBvy487tV6Fq3@dpg-d158746uk2gs73bun24g-a/autolux_db
