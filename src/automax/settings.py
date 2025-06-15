@@ -88,22 +88,11 @@ WSGI_APPLICATION = 'automax.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#database
+# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# Check for DATABASE_URL in the environment
-if 'DATABASE_URL' in os.environ:
-    # Production (Render, etc.)
-    DATABASES = {
-        'default': dj_database_url.config(default=env('DATABASE_URL'))
-    }
-else:
-    # Local development (SQLite or local PostgreSQL)
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+DATABASES = {
+    'default': dj_database_url.config(default=env('DATABASE_URL'))
+}
 
 
 # Password validation
