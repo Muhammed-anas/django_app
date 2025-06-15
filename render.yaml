@@ -21,7 +21,7 @@ services:
       - key: DJANGO_SUPERUSER_USERNAME
         value: AnasAnu
       - key: DJANGO_SUPERUSER_EMAIL
-        value: anasanu8865@gnail.com
+        value: anasanu8865@gmail.com
       - key: DJANGO_SUPERUSER_PASSWORD
         value: anu@886542
       
