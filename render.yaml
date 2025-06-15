@@ -7,8 +7,6 @@ services:
     envVars:
       - key: DEBUG
         value: False
-      - key: SECRET_KEY
-        value: w_%#8ovr*k(p*j%wv^oeja3_1&_p^b7vubgmbh=qgl6oz21nec
       - key: ALLOWED_HOSTS
         value: autolux-ntbk.onrender.com
       - key: EMAIL_HOST_USER
